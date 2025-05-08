@@ -45,8 +45,8 @@ Abaixo estão os nomes das constantes usadas no projeto e a pinagem exata das de
 - Bolas virtuais caem do topo, colidindo com os pinos e desviando probabilisticamente para a esquerda ou direita.
 - O joystick permite ao usuário introduzir um "bias" (tendência), influenciando a probabilidade de desvio das bolas e, consequentemente, deslocando o pico da distribuição resultante.
 - As bolas se acumulam nos compartimentos (bins) na base do display.
-- Pressionar o botão "Adicionar Bola" (`BUTTON_PIN_ADD_BALL`) introduz uma nova bola na simulação a partir do topo.
-- Pressionar o botão "Alternar Visão" (`BUTTON_PIN_TOGGLE_VIEW`) alterna a exibição entre a simulação em tempo real das bolas caindo (`VIEW_SIMULATION`) e um histograma (`VIEW_HISTOGRAM`) que mostra a contagem de bolas em cada compartimento.
+- Pressionar o botão "Adicionar Bola" (`BUTTON_A_PIN`) introduz uma nova bola na simulação a partir do topo.
+- Pressionar o botão "Alternar Visão" (`BUTTON_B_PIN`) alterna a exibição entre a simulação em tempo real das bolas caindo (`VIEW_SIMULATION`) e um histograma (`VIEW_HISTOGRAM`) que mostra a contagem de bolas em cada compartimento.
 - O histograma, com um número suficiente de bolas, deve visualmente aproximar-se de uma curva de distribuição normal. O bias aplicado pelo joystick deve deslocar o centro desta curva.
 - O display exibe continuamente a contagem total de bolas que já caíram (`N:`) e um indicador visual do bias aplicado pelo joystick.
 
