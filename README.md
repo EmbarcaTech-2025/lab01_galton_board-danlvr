@@ -10,50 +10,45 @@ Brasília, Maio de 2025
 
 ---
 
-# Simulador de Tábua de Galton com RP2040
+# Simulador de Galton Board
 
 ## 🎯 Objetivo do Projeto
 
-Este projeto implementa um simulador interativo da Tábua de Galton (também conhecida como Quincunx) utilizando o microcontrolador RP2040. O objetivo é demonstrar visualmente a formação da distribuição normal à medida que bolas virtuais caem através de uma grade de pinos e se acumulam em compartimentos na base. O usuário pode influenciar a trajetória das bolas através de um joystick (controlando o "bias") e alternar entre a visualização da simulação em tempo real e um histograma da distribuição das bolas.
+Este projeto implementa um simulador interativo da Galton Board utilizando o microcontrolador RP2040 presente da placa de desenvolvimento BitDogLab. O objetivo é demonstrar visualmente a formação da distribuição normal à medida que bolas virtuais caem através de uma grade de pinos e se acumulam em compartimentos na base. O usuário pode influenciar a trajetória das bolas através de um joystick (controlando o "bias") e alternar entre a visualização da simulação em tempo real e um histograma da distribuição das bolas.
 
 ## 🔧 Componentes Utilizados
 
-- Placa com microcontrolador RP2040 (ex: Raspberry Pi Pico, BitDogLab)
+- Placa com microcontrolador RP2040 - BitDogLab
 - Display OLED SSD1306 (128x64 pixels, interface I2C)
 - Joystick analógico (para controle de bias)
-- Botões de pressão (para adicionar bolas, alternar visualização, resetar simulação)
+- Botões de pressão (para adicionar bolas e alternar visualização)
 
 ## 📌 Pinagem do Dispositivo
 
-A pinagem exata depende das definições em `config.h`. Abaixo estão os nomes das constantes típicas usadas no projeto:
+Abaixo estão os nomes das constantes usadas no projeto e a pinagem exata das definições em `config.h`. :
 
-| Pino RP2040 (Constante em `config.h`) | Função          | Conexão                |
+| Constante           | Pino RP2040     | Função          | Conexão                |
 |---------------------------------------|-----------------|------------------------|
-| `I2C_SDA_PIN`                         | SDA (I2C0)      | Display OLED SSD1306   |
-| `I2C_SCL_PIN`                         | SCL (I2C0)      | Display OLED SSD1306   |
-| `JOYSTICK_X_PIN`                      | ADC (Eixo X)    | Joystick               |
-| `BUTTON_PIN_ADD_BALL`                 | Entrada Digital | Botão Adicionar Bola   |
-| `BUTTON_PIN_TOGGLE_VIEW`              | Entrada Digital | Botão Alternar Visão   |
-| `BUTTON_PIN_RESET_SIM`                | Entrada Digital | Botão Resetar Simulação|
-
-*(Nota: Os valores GPIO específicos para estas constantes são definidos no arquivo `config.h` do projeto.)*
+| `I2C_SDA_PIN`       |       14        | SDA (I2C0)      | Display OLED SSD1306   |
+| `I2C_SCL_PIN`       |       15        | SCL (I2C0)      | Display OLED SSD1306   |
+| `JOYSTICK_X_GPIO`   |       27        | ADC (Eixo X)    | Joystick               |
+| `BUTTON_A_PIN`      |        5        | Entrada Digital | Botão Adicionar Bola   |
+| `BUTTON_B_PIN`      |        6        | Entrada Digital | Botão Alternar Visão   |
 
 ## 📸 Demonstração do funcionamento
 
-<!-- Você pode inserir um GIF ou imagem da simulação aqui -->
-<!-- Exemplo: ![Demonstração da Tábua de Galton](assets/galton_board_sim.gif) -->
+![Demonstração da Tábua de Galton](assets/galton_board_sim.gif)
 (A demonstração visual do projeto seria inserida aqui, mostrando as bolas caindo e o histograma se formando.)
 
 ## 📊 Resultados Esperados/Observados
 
-- Ao iniciar, o display OLED exibe uma mensagem de carregamento e, em seguida, a visualização da simulação da Tábua de Galton.
+- Ao iniciar, o display OLED exibe uma mensagem de carregamento e, em seguida, a visualização da simulação da Galton Board.
 - Bolas virtuais caem do topo, colidindo com os pinos e desviando probabilisticamente para a esquerda ou direita.
 - O joystick permite ao usuário introduzir um "bias" (tendência), influenciando a probabilidade de desvio das bolas e, consequentemente, deslocando o pico da distribuição resultante.
 - As bolas se acumulam nos compartimentos (bins) na base do display.
 - Pressionar o botão "Adicionar Bola" (`BUTTON_PIN_ADD_BALL`) introduz uma nova bola na simulação a partir do topo.
 - Pressionar o botão "Alternar Visão" (`BUTTON_PIN_TOGGLE_VIEW`) alterna a exibição entre a simulação em tempo real das bolas caindo (`VIEW_SIMULATION`) e um histograma (`VIEW_HISTOGRAM`) que mostra a contagem de bolas em cada compartimento.
-- O histograma, com um número suficiente de bolas, deve visualmente aproximar-se de uma curva de distribuição normal (curva de sino). O bias aplicado pelo joystick deve deslocar o centro desta curva.
-- Pressionar o botão "Resetar Simulação" (`BUTTON_PIN_RESET_SIM`) limpa todas as bolas da tela, zera a contagem nos compartimentos e o total de bolas caídas.
+- O histograma, com um número suficiente de bolas, deve visualmente aproximar-se de uma curva de distribuição normal. O bias aplicado pelo joystick deve deslocar o centro desta curva.
 - O display exibe continuamente a contagem total de bolas que já caíram (`N:`) e um indicador visual do bias aplicado pelo joystick.
 
 ## 🔍 Notas Técnicas
@@ -69,11 +64,7 @@ A pinagem exata depende das definições em `config.h`. Abaixo estão os nomes d
 ## 📚 Bibliotecas Utilizadas
 
 - Raspberry Pi Pico SDK (`pico-sdk`): SDK oficial para desenvolvimento no RP2040.
-- Driver `ssd1306`: Biblioteca para controle de displays OLED baseados no chip SSD1306, adaptada para o `pico-sdk` (provavelmente baseada no trabalho de David Schramm, conforme indicado pela licença nos arquivos fonte do driver).
-
----
-
-*Este projeto foi desenvolvido como parte do programa EmbarcaTech*
+- [pico-ssd1306](https://github.com/daschr/pico-ssd1306) - Biblioteca para utilização de displays SSD1306 com o Raspberry Pi Pico e o pico-sdk.
 
 ---
 
