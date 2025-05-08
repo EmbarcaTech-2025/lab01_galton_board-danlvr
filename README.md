@@ -28,7 +28,7 @@ Este projeto implementa um simulador interativo da Galton Board utilizando o mic
 Abaixo estão os nomes das constantes usadas no projeto e a pinagem exata das definições em `config.h`. :
 
 | Constante           | Pino RP2040     | Função          | Conexão                |
-|---------------------------------------|-----------------|------------------------|
+|---------------------|-----------------|-----------------|------------------------|
 | `I2C_SDA_PIN`       |       14        | SDA (I2C0)      | Display OLED SSD1306   |
 | `I2C_SCL_PIN`       |       15        | SCL (I2C0)      | Display OLED SSD1306   |
 | `JOYSTICK_X_GPIO`   |       27        | ADC (Eixo X)    | Joystick               |
@@ -38,7 +38,6 @@ Abaixo estão os nomes das constantes usadas no projeto e a pinagem exata das de
 ## 📸 Demonstração do funcionamento
 
 ![Demonstração da Tábua de Galton](assets/galton_board_sim.gif)
-(A demonstração visual do projeto seria inserida aqui, mostrando as bolas caindo e o histograma se formando.)
 
 ## 📊 Resultados Esperados/Observados
 
